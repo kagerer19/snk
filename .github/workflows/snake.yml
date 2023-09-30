@@ -12,9 +12,17 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      
     - name: Generate snake game
       uses: ./
       with:
         github_user_name: kagerer19
         outputs: |
           github-contribution-grid-snake.svg
+
+    # New step for deploying to GitHub Pages
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        token: ${{ secrets.GH_PAT }}
+        publish_dir: ./ # Assuming the SVG is generated at the root of your repo.

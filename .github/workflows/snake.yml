@@ -19,9 +19,9 @@ jobs:
             github-contribution-grid-snake.svg
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: crazy-max/ghaction-github-pages@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./
+          target_branch: gh-pages
+          build_dir: ./
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

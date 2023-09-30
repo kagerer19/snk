@@ -8,19 +8,18 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-      
-    - name: Generate snake game
-      uses: ./
-      with:
-        github_user_name: kagerer19
-        outputs: |
-          github-contribution-grid-snake.svg
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        token: ${{ secrets.GH_PAT }}
-        publish_dir: ./ 
+      - name: Generate snake game
+        uses: ./
+        with:
+          github_user_name: kagerer19
+          outputs: |
+            github-contribution-grid-snake.svg
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./

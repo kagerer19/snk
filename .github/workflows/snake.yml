@@ -1,5 +1,3 @@
-name: Generate snake game from my contribution grid
-
 on:
   schedule:
     - cron: "0 0 * * *"
@@ -12,7 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Generate snake game
         uses: ./
         with:
@@ -25,4 +23,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
